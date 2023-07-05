@@ -6,7 +6,7 @@ import { EmptyStateProps } from './types';
 const EmptyState = ({ text }: EmptyStateProps) => {
   return (
     <VStack width='100%'>
-      <VscSearchStop fontSize='200px' />
+      <VscSearchStop title='empty-svg' fontSize='200px' />
       <Center data-testid='empty-state-message'>
         <Text align='center'>{text}</Text>
       </Center>

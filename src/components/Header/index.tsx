@@ -20,12 +20,19 @@ import { HeaderDictionary, EmptyStateTexts } from '../../dictionary/home';
 
 import { AiFillHeart, AiOutlineShoppingCart } from 'react-icons/ai';
 import { useFavorites } from '../../Store/useFavorites';
+import ProductItem from '../ProductItem';
 import EmptyState from '../EmptyState';
 import { useNavigate } from 'react-router-dom';
+import { useCallback } from 'react';
 
 const Header = () => {
   const favoritesProducts = useFavorites((state) => state.products);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate();
+
+  const handleCart = useCallback(() => {
+    return navigate('/cart');
+  }, [navigate]);
 
   return (
     <VStack width='100%' maxW={1080} p={4}>
@@ -40,6 +47,7 @@ const Header = () => {
               aria-label={HeaderDictionary.AriaLabelDrawer}
               onClick={onOpen}
               icon={<AiFillHeart />}
+              title='heart-svg'
             />
             <Center
               position='absolute'
@@ -62,7 +70,9 @@ const Header = () => {
             <IconButton
               mr={6}
               aria-label={HeaderDictionary.AriaLabelDrawer}
+              onClick={handleCart}
               icon={<AiOutlineShoppingCart />}
+              title='cart-svg'
             />
             <Center
               position='absolute'
@@ -79,14 +89,6 @@ const Header = () => {
             </Center>
           </Box>
         </Tooltip>
-
-        {/* <Tooltip label={HeaderDictionary.TooltipTheme}>
-          <IconButton
-            aria-label={HeaderDictionary.AriaLabelTheme}
-            onClick={toggleColorMode}
-            icon={isDark ? <FaSun /> : <FaMoon />}
-          />
-        </Tooltip> */}
       </Flex>
 
       <Drawer placement='right' onClose={onClose} isOpen={isOpen}>
@@ -99,7 +101,9 @@ const Header = () => {
             {favoritesProducts.length === 0 ? (
               <EmptyState text={EmptyStateTexts.messageEmptyFavotiteList} />
             ) : (
-              favoritesProducts.map((product) => <span>{product.name}</span>)
+              favoritesProducts.map((product) => (
+                <ProductItem key={product.id} {...product} />
+              ))
             )}
           </DrawerBody>
         </DrawerContent>
