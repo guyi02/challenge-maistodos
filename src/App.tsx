@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import { ChakraProvider } from '@chakra-ui/react';
 import { RouterProvider } from 'react-router-dom';
 import { ROUTES } from './routes';
 
@@ -9,7 +10,9 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
-      <RouterProvider router={ROUTES} />
+      <ChakraProvider>
+        <RouterProvider router={ROUTES} />
+      </ChakraProvider>
     </QueryClientProvider>
   );
 };

@@ -1,11 +1,11 @@
-type Product = {
+export type Product = {
   id: number;
-  nome: string;
-  descricao: string;
-  preco: number;
-  categoria_id: number;
+  name: string;
+  description: string;
+  image: string;
+  price: number;
 };
 
 export type ProductListResponse = Product[];
 
-export type ProductResponse = Omit<Product, 'categoria_id'>;
+export type ProductResponse = Product;

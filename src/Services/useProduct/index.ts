@@ -7,7 +7,7 @@ export const useProductList = () => {
   return useQuery<ProductListResponse, Error>({
     queryKey: useProductsKey(),
     queryFn: async (): Promise<ProductListResponse> => {
-      const { data } = await apiClient.get('/produtos');
+      const { data } = await apiClient.get('/products');
       return data;
     },
   });
@@ -17,7 +17,7 @@ export const useProduct = (id: number) => {
   return useQuery<ProductResponse, Error>({
     queryKey: useProductByIdKey(id),
     queryFn: async (): Promise<ProductResponse> => {
-      const { data } = await apiClient.get(`/produtos/${id}`);
+      const { data } = await apiClient.get(`/products/${id}`);
       return data;
     },
   });
