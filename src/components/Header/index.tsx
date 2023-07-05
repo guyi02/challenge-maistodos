@@ -65,7 +65,7 @@ const Header = () => {
           </Box>
         </Tooltip>
 
-        <Tooltip label={HeaderDictionary.TooltipFavorite}>
+        <Tooltip label={HeaderDictionary.TooltipCart}>
           <Box position='relative'>
             <IconButton
               mr={6}

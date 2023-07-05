@@ -24,8 +24,8 @@ describe('Header component', () => {
 
   it('should Header component open drawer after click', () => {
     render(<Header />);
-    const areaToClick = screen.getByTitle('heart-svg');
-    fireEvent.click(areaToClick);
+    const icon = screen.getByTitle('heart-svg');
+    fireEvent.click(icon);
     const drawer = screen.getByText(HeaderDictionary.DrawerTitle);
     expect(drawer).toBeInTheDocument();
   });
