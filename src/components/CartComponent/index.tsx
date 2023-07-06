@@ -7,31 +7,55 @@ import {
   Stack,
   StackDivider,
   useColorModeValue,
-  Button,
   Divider,
+  IconButton,
 } from '@chakra-ui/react';
 import CartItem from './component/CartItem';
 import { useCart } from '../../Store/useCart';
+import PaymentButton from '../PaymentButton';
+import { FaArrowLeft } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { useCallback } from 'react';
 
 const CartComponent = () => {
+  const navigate = useNavigate();
   const cartProducts = useCart((state) => state.cart);
+  const totalValue =
+    cartProducts.length > 0
+      ? cartProducts
+          .map((cartProduct) => cartProduct.price * cartProduct.qty)
+          .reduce((total, item) => total + item)
+      : 0;
+
+  const goBack = useCallback(() => {
+    return navigate('/');
+  }, [navigate]);
 
   return (
     <Container maxW={'5xl'} py={12}>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
         <Stack spacing={4}>
-          <Text
-            textTransform={'uppercase'}
-            color={'blue.400'}
-            fontWeight={600}
-            fontSize={'sm'}
-            bg={useColorModeValue('blue.50', 'blue.900')}
-            p={2}
-            alignSelf={'flex-start'}
-            rounded={'md'}
-          >
-            My Cart
-          </Text>
+          <Flex direction={'row'}>
+            <IconButton
+              mr={6}
+              aria-label={'teste'}
+              onClick={goBack}
+              icon={<FaArrowLeft />}
+              title='cart-svg'
+            />
+            <Text
+              textTransform={'uppercase'}
+              color={'blue.400'}
+              fontWeight={600}
+              fontSize={'sm'}
+              bg={useColorModeValue('blue.50', 'blue.900')}
+              p={2}
+              alignSelf={'flex-start'}
+              rounded={'md'}
+            >
+              My Cart
+            </Text>
+          </Flex>
           <Heading>Check out the products in your cart </Heading>
 
           <Stack
@@ -53,21 +77,12 @@ const CartComponent = () => {
           <Stack spacing={10} pt={2} width={'full'} mt={24}>
             <Flex direction={'row'} align={'center'} justify={'space-between'}>
               <Heading>Total:</Heading>
-              <Text fontSize={'3xl'}>R$ 1548</Text>
+              <Text fontSize={'3xl'}>R$ {totalValue}</Text>
             </Flex>
+
             <Divider />
-            <Button
-              onClick={() => alert('pay')}
-              loadingText='Submitting'
-              size='lg'
-              bg={'blue.400'}
-              color={'white'}
-              _hover={{
-                bg: 'blue.500',
-              }}
-            >
-              Pay
-            </Button>
+
+            <PaymentButton isDisabled={cartProducts.length === 0} />
           </Stack>
         </Flex>
       </SimpleGrid>

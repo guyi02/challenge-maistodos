@@ -29,6 +29,8 @@ const CartItem = ({
         <Text fontWeight={300} fontSize={'small'} color={'gray.400'}>
           {description}
         </Text>
+
+        <Text fontWeight={700}>R$ {price}</Text>
       </Stack>
 
       <Flex direction={'row'} marginLeft={'auto'} align={'center'}>
