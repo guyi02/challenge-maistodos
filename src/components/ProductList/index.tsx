@@ -1,11 +1,8 @@
-import React from 'react';
 import { useProductList } from '../../Services/useProduct';
-
 import { SimpleGrid, GridItem, Box, Skeleton } from '@chakra-ui/react';
 import EmptyState from '../EmptyState';
 import ProductItem from '../ProductItem';
 import { EmptyStateTexts } from '../../dictionary/home';
-import { useCart } from '../../Store/useCart';
 
 const ProductList = () => {
   const { data: products, isSuccess, isLoading, isFetching } = useProductList();

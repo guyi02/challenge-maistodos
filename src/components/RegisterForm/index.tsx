@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   FormControl,
   FormLabel,
@@ -15,7 +15,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { registerValidationSchema } from '../../utils/validations';
 
 import { RegisterFormProps } from './types';
-import { useCreateProduct } from '../../Services/useProduct';
+import { useCreateProduct, useEditProduct } from '../../Services/useProduct';
 import { useQueryClient } from 'react-query';
 import { productsKey } from '../../Services/keys/useProduct';
 import { ProductListResponse } from '../../Services/useProduct/types';
@@ -28,6 +28,7 @@ const INITIAL_VALUES: RegisterFormProps = {
 };
 
 const RegisterForm = ({ editProduct }: { editProduct: number }) => {
+  const [isEdit, setIsEdit] = useState(false);
   const [queryProductsData] =
     useQueryClient().getQueriesData<ProductListResponse>(productsKey());
   const [_, products] = queryProductsData;
@@ -48,18 +49,33 @@ const RegisterForm = ({ editProduct }: { editProduct: number }) => {
         value: editable?.price,
         ...editable,
       });
+      setIsEdit(true);
     }
   }, [editProduct, products, reset]);
 
-  const mutation = useCreateProduct();
+  const mutationCreate = useCreateProduct();
+  const mutationEdit = useEditProduct();
 
   const onSubmit: SubmitHandler<RegisterFormProps> = (data) => {
-    mutation.mutate({
+    mutationCreate.mutate({
       ...data,
       id: Math.floor(Math.random() * 20),
       price: data.value,
     });
     reset(INITIAL_VALUES);
+  };
+
+  const onEdit: SubmitHandler<RegisterFormProps> = (data) => {
+    const editable = products.find((prod) => prod.id === editProduct);
+    if (editable) {
+      mutationEdit.mutate({
+        ...data,
+        id: editProduct,
+        price: data.value,
+      });
+      reset(INITIAL_VALUES);
+      setIsEdit(false);
+    }
   };
 
   return (
@@ -102,7 +118,7 @@ const RegisterForm = ({ editProduct }: { editProduct: number }) => {
 
       <Stack spacing={10} pt={2}>
         <Button
-          onClick={handleSubmit(onSubmit)}
+          onClick={isEdit ? handleSubmit(onEdit) : handleSubmit(onSubmit)}
           loadingText='Submitting'
           size='lg'
           bg={'blue.400'}
@@ -111,7 +127,7 @@ const RegisterForm = ({ editProduct }: { editProduct: number }) => {
             bg: 'blue.500',
           }}
         >
-          Save
+          {isEdit ? 'Edit' : 'Save'}
         </Button>
       </Stack>
     </Stack>
