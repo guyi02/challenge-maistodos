@@ -7,17 +7,11 @@ import {
   Text,
   Stack,
   StackDivider,
-  Icon,
   IconButton,
   useColorModeValue,
   Button,
   Divider,
 } from '@chakra-ui/react';
-import {
-  IoAnalyticsSharp,
-  IoLogoBitcoin,
-  IoSearchSharp,
-} from 'react-icons/io5';
 
 import { FaPlus, FaMinus } from 'react-icons/fa';
 
