@@ -7,17 +7,18 @@ import {
   Stack,
   StackDivider,
   useColorModeValue,
-  Divider,
   IconButton,
 } from '@chakra-ui/react';
 
 import { FaArrowLeft } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import RegisterForm from '../../components/RegisterForm';
 import ProductListAdmin from '../../components/ProductListAdmin';
 
 const Admin = () => {
+  const [editProduct, setEditProduct] = useState<undefined | number>();
+
   const navigate = useNavigate();
 
   const goBack = useCallback(() => {
@@ -59,13 +60,13 @@ const Admin = () => {
               />
             }
           >
-            <ProductListAdmin />
+            <ProductListAdmin handleEdit={(id) => setEditProduct(id)} />
           </Stack>
         </Stack>
         <Flex>
           <Stack spacing={10} pt={2} width={'full'} mt={24}>
             <Heading>New Product</Heading>
-            <RegisterForm />
+            <RegisterForm editProduct={editProduct || 0} />
           </Stack>
         </Flex>
       </SimpleGrid>

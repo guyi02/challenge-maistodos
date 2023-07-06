@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   FormControl,
   FormLabel,
@@ -16,6 +16,9 @@ import { registerValidationSchema } from '../../utils/validations';
 
 import { RegisterFormProps } from './types';
 import { useCreateProduct } from '../../Services/useProduct';
+import { useQueryClient } from 'react-query';
+import { productsKey } from '../../Services/keys/useProduct';
+import { ProductListResponse } from '../../Services/useProduct/types';
 
 const INITIAL_VALUES: RegisterFormProps = {
   name: '',
@@ -24,7 +27,11 @@ const INITIAL_VALUES: RegisterFormProps = {
   value: 0,
 };
 
-const RegisterForm = () => {
+const RegisterForm = ({ editProduct }: { editProduct: number }) => {
+  const [queryProductsData] =
+    useQueryClient().getQueriesData<ProductListResponse>(productsKey());
+  const [_, products] = queryProductsData;
+
   const {
     register,
     handleSubmit,
@@ -33,6 +40,16 @@ const RegisterForm = () => {
   } = useForm<RegisterFormProps>({
     resolver: zodResolver(registerValidationSchema),
   });
+
+  useEffect(() => {
+    if (editProduct) {
+      const editable = products.find((prod) => prod.id === editProduct);
+      reset({
+        value: editable?.price,
+        ...editable,
+      });
+    }
+  }, [editProduct, products, reset]);
 
   const mutation = useCreateProduct();
 

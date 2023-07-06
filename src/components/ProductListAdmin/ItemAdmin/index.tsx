@@ -7,7 +7,14 @@ import { ItemAdminProps } from './types';
 import { useDeleteProduct } from '../../../Services/useProduct';
 import { useCallback } from 'react';
 
-const ItemAdmin = ({ id, name, description, image, price }: ItemAdminProps) => {
+const ItemAdmin = ({
+  id,
+  name,
+  description,
+  image,
+  price,
+  handleEdit,
+}: ItemAdminProps) => {
   const mutation = useDeleteProduct();
 
   const handleDeleteItem = useCallback(
@@ -40,7 +47,7 @@ const ItemAdmin = ({ id, name, description, image, price }: ItemAdminProps) => {
         <IconButton
           mx={6}
           aria-label={'teste'}
-          onClick={() => alert('editar')}
+          onClick={() => handleEdit(id)}
           icon={<FaPenAlt />}
           title='heart-svg'
           bg={'yellow.200'}

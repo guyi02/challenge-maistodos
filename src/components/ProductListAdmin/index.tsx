@@ -3,7 +3,11 @@ import React from 'react';
 import { useProductList } from '../../Services/useProduct';
 import ItemAdmin from './ItemAdmin';
 
-const ProductListAdmin = () => {
+const ProductListAdmin = ({
+  handleEdit,
+}: {
+  handleEdit: (id: number) => void;
+}) => {
   const { data: products, isSuccess } = useProductList();
 
   return (
@@ -11,7 +15,7 @@ const ProductListAdmin = () => {
       <>
         {products.map((product) => (
           <>
-            <ItemAdmin {...product} />
+            <ItemAdmin {...product} handleEdit={(id) => handleEdit(id)} />
           </>
         ))}
       </>
