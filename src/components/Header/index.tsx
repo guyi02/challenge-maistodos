@@ -24,9 +24,11 @@ import ProductItem from '../ProductItem';
 import EmptyState from '../EmptyState';
 import { useNavigate } from 'react-router-dom';
 import { useCallback } from 'react';
+import { useCart } from '../../Store/useCart';
 
 const Header = () => {
   const favoritesProducts = useFavorites((state) => state.products);
+  const productsOnCart = useCart((state) => state.cart);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
 
@@ -85,7 +87,7 @@ const Header = () => {
               justifyContent='center'
               alignItems='center'
             >
-              <Text fontSize='12px'>{favoritesProducts.length}</Text>
+              <Text fontSize='12px'>{productsOnCart.length}</Text>
             </Center>
           </Box>
         </Tooltip>

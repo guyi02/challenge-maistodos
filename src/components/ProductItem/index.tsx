@@ -12,18 +12,27 @@ import {
 
 import { ProductDictionary } from '../../dictionary/home';
 import { Product as ProductProps } from '../../Services/useProduct/types';
-import { FaCartPlus } from 'react-icons/fa';
+import { FaCartPlus, FaCartArrowDown } from 'react-icons/fa';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { useFavorites } from '../../Store/useFavorites';
 import { useMemo } from 'react';
+import { useCart } from '../../Store/useCart';
 
 const ProductItem = ({ id, name, price, image, description }: ProductProps) => {
   const favoritesProducts = useFavorites((state) => state.products);
   const handleFavoriteProducts = useFavorites((state) => state.setProducts);
 
+  const productsOnCart = useCart((state) => state.cart);
+  const addProduct = useCart((state) => state.addProduct);
+
   const isFavorite = useMemo(
     () => favoritesProducts.find((favProd) => favProd.id === id),
     [favoritesProducts, id]
+  );
+
+  const hasOnCart = useMemo(
+    () => productsOnCart.find((cartProd) => cartProd.id === id),
+    [productsOnCart, id]
   );
 
   return (
@@ -40,7 +49,7 @@ const ProductItem = ({ id, name, price, image, description }: ProductProps) => {
           />
 
           <Center my={2}>
-            <Tag bg={'green.200'}>Valor: R${price}</Tag>
+            <Tag bg={'green.200'}>Price: R${price}</Tag>
           </Center>
 
           <Center>
@@ -79,9 +88,19 @@ const ProductItem = ({ id, name, price, image, description }: ProductProps) => {
 
             <IconButton
               aria-label={'teste'}
-              onClick={() => alert('cart')}
-              icon={<FaCartPlus />}
+              onClick={() => {
+                addProduct({
+                  id,
+                  price,
+                  image,
+                  name,
+                  description,
+                  qty: 1,
+                });
+              }}
               title='heart-svg'
+              color={hasOnCart ? 'green.200' : 'black.200'}
+              icon={hasOnCart ? <FaCartArrowDown /> : <FaCartPlus />}
             />
           </Flex>
         </Box>
