@@ -83,12 +83,6 @@ const CartComponent = () => {
             <Divider />
 
             <PaymentButton isDisabled={cartProducts.length === 0} />
-
-            {cartProducts.length === 1 && (
-              <Text color='red.200' align={'center'}>
-                You need to login to make the payment.
-              </Text>
-            )}
           </Stack>
         </Flex>
       </SimpleGrid>

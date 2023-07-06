@@ -1,19 +1,24 @@
 import { Button } from '@chakra-ui/react';
 import getStripe from '../../lib/stripe';
 import { PaymentButtonProps } from './types';
+import { useCart } from '../../Store/useCart';
 
 const PaymentButton = ({ isDisabled }: PaymentButtonProps) => {
+  const cartItems = useCart((state) => state.cart);
   async function handleCheckout() {
     const stripe = await getStripe();
+    const itemsOnCart = cartItems.map((cartItem) => {
+      const newData = {
+        price: cartItem.price_id_api,
+        quantity: cartItem.qty,
+      };
+      return newData;
+    });
+
     const { error } = await stripe.redirectToCheckout({
-      lineItems: [
-        {
-          price: 'price_1NQetULvJyV6bQCEZ0p6IRB7',
-          quantity: 3,
-        },
-      ],
+      lineItems: itemsOnCart,
       mode: 'subscription',
-      successUrl: `http://localhost:3000/login`,
+      successUrl: `http://localhost:3000/payment-success`,
       cancelUrl: `http://localhost:3000/cart`,
       customerEmail: 'customer@email.com',
     });

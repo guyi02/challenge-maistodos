@@ -24,6 +24,7 @@ const INITIAL_VALUES: RegisterFormProps = {
   name: '',
   description: '',
   image: '',
+  price_id_api: '',
   value: 0,
 };
 
@@ -101,6 +102,14 @@ const RegisterForm = ({ editProduct }: { editProduct: number }) => {
         <Input type='text' {...register('image')} />
         {errors.image && errors.image.message && (
           <Text color='red.200'>{errors.image.message}</Text>
+        )}
+      </FormControl>
+
+      <FormControl id='price_id_api' isRequired>
+        <FormLabel>Price ID</FormLabel>
+        <Input type='text' {...register('price_id_api')} />
+        {errors.price_id_api && errors.price_id_api.message && (
+          <Text color='red.200'>{errors.price_id_api.message}</Text>
         )}
       </FormControl>
       <FormControl id='value' isRequired>

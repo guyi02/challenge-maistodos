@@ -18,7 +18,14 @@ import { useFavorites } from '../../Store/useFavorites';
 import { useMemo } from 'react';
 import { useCart } from '../../Store/useCart';
 
-const ProductItem = ({ id, name, price, image, description }: ProductProps) => {
+const ProductItem = ({
+  id,
+  name,
+  price,
+  image,
+  description,
+  price_id_api,
+}: ProductProps) => {
   const favoritesProducts = useFavorites((state) => state.products);
   const handleFavoriteProducts = useFavorites((state) => state.setProducts);
 
@@ -79,6 +86,7 @@ const ProductItem = ({ id, name, price, image, description }: ProductProps) => {
                   image,
                   name,
                   description,
+                  price_id_api,
                 })
               }
               color={isFavorite ? 'red.200' : 'black.200'}
@@ -96,6 +104,7 @@ const ProductItem = ({ id, name, price, image, description }: ProductProps) => {
                   name,
                   description,
                   qty: 1,
+                  price_id_api,
                 });
               }}
               title='heart-svg'

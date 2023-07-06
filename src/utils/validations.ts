@@ -8,5 +8,6 @@ export const registerValidationSchema = z.object({
     .min(3, { message: 'description must be atleast 3 characters' }),
 
   image: z.string().min(1, { message: 'Image is required' }),
+  price_id_api: z.string().min(1, { message: 'priceID is required' }),
   value: z.number().min(1, { message: 'Value is required' }),
 });

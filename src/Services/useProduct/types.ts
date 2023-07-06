@@ -4,6 +4,7 @@ export type Product = {
   description: string;
   image: string;
   price: number;
+  price_id_api: string;
 };
 
 export type ProductListResponse = Product[];

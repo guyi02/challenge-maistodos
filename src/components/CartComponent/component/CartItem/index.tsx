@@ -12,6 +12,7 @@ const CartItem = ({
   qty,
   image,
   price,
+  price_id_api,
 }: CartItemProps) => {
   const updateQty = useCart((state) => state.updateQty);
   return (
@@ -45,6 +46,7 @@ const CartItem = ({
               qty: qty === 1 ? 0 : Number(qty) - 1,
               image,
               price,
+              price_id_api,
             });
           }}
           icon={<FaMinus />}
@@ -62,6 +64,7 @@ const CartItem = ({
               qty: Number(qty) + 1,
               image,
               price,
+              price_id_api,
             });
           }}
           icon={<FaPlus />}
