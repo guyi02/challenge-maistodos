@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Cart from './pages/Cart';
+import PaymentSuccess from './pages/PaymentSuccess';
 
 export const ROUTES = createBrowserRouter([
   {
@@ -15,5 +16,9 @@ export const ROUTES = createBrowserRouter([
   {
     path: '/cart',
     element: <Cart />,
+  },
+  {
+    path: '/payment-success',
+    element: <PaymentSuccess />,
   },
 ]);
