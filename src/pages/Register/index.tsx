@@ -5,6 +5,7 @@ import {
   FormLabel,
   Input,
   InputGroup,
+  HStack,
   InputRightElement,
   Stack,
   Button,
@@ -16,7 +17,7 @@ import {
 import { useState } from 'react';
 import { AiFillEye, AiOutlineEye } from 'react-icons/ai';
 
-const Login = () => {
+const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <Flex
@@ -28,7 +29,7 @@ const Login = () => {
       <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
         <Stack align={'center'}>
           <Heading fontSize={'4xl'} textAlign={'center'}>
-            Login
+            Sign up
           </Heading>
         </Stack>
         <Box
@@ -38,6 +39,20 @@ const Login = () => {
           p={8}
         >
           <Stack spacing={4}>
+            <HStack>
+              <Box>
+                <FormControl id='firstName' isRequired>
+                  <FormLabel>First Name</FormLabel>
+                  <Input type='text' />
+                </FormControl>
+              </Box>
+              <Box>
+                <FormControl id='lastName'>
+                  <FormLabel>Last Name</FormLabel>
+                  <Input type='text' />
+                </FormControl>
+              </Box>
+            </HStack>
             <FormControl id='email' isRequired>
               <FormLabel>Email address</FormLabel>
               <Input type='email' />
@@ -68,14 +83,14 @@ const Login = () => {
                   bg: 'blue.500',
                 }}
               >
-                Login
+                Sign up
               </Button>
             </Stack>
             <Stack pt={6}>
               <Text align={'center'}>
-                New user?{' '}
-                <Link color={'blue.400'} href='/register'>
-                  Register
+                Already a user?{' '}
+                <Link color={'blue.400'} href='/login'>
+                  Login
                 </Link>
               </Text>
             </Stack>
@@ -86,4 +101,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
