@@ -3,24 +3,31 @@ import { Image, Flex, Text, Stack, IconButton } from '@chakra-ui/react';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 
 import { CartItemProps } from './types';
+import { useCart } from '../../../../Store/useCart';
 
-const CartItem = ({ text }: CartItemProps) => {
+const CartItem = ({
+  id,
+  name,
+  description,
+  qty,
+  image,
+  price,
+}: CartItemProps) => {
+  const updateQty = useCart((state) => state.updateQty);
   return (
     <Stack direction={'row'} align={'center'}>
       <Flex w={20} h={20} align={'center'} justify={'center'} rounded={'full'}>
         <Image
           rounded={'md'}
           alt={'feature image'}
-          src={
-            'https://images.unsplash.com/photo-1554200876-56c2f25224fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-          }
+          src={image}
           objectFit={'cover'}
         />
       </Flex>
       <Stack>
-        <Text fontWeight={600}>{text}</Text>
-        <Text fontWeight={300} color={'gray.400'}>
-          minha descição
+        <Text fontWeight={600}>{name}</Text>
+        <Text fontWeight={300} fontSize={'small'} color={'gray.400'}>
+          {description}
         </Text>
       </Stack>
 
@@ -28,15 +35,33 @@ const CartItem = ({ text }: CartItemProps) => {
         <IconButton
           mx={6}
           aria-label={'teste'}
-          onClick={() => alert('plus')}
+          onClick={() => {
+            updateQty({
+              id,
+              name,
+              description,
+              qty: qty === 1 ? 0 : Number(qty) - 1,
+              image,
+              price,
+            });
+          }}
           icon={<FaMinus />}
           title='heart-svg'
         />
-        <Text>1</Text>
+        <Text>{qty}</Text>
         <IconButton
           mx={6}
           aria-label={'teste'}
-          onClick={() => alert('plus')}
+          onClick={() => {
+            updateQty({
+              id,
+              name,
+              description,
+              qty: Number(qty) + 1,
+              image,
+              price,
+            });
+          }}
           icon={<FaPlus />}
           title='heart-svg'
         />

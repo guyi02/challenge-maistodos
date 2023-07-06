@@ -1,8 +1,9 @@
 import { Product } from '../../Services/useProduct/types';
-type CartProduct = Product & {
+export type CartProduct = Product & {
   qty: number;
 };
 export type CartStore = {
   cart: CartProduct[];
   addProduct: (products: CartProduct) => void;
+  updateQty: (products: CartProduct) => void;
 };

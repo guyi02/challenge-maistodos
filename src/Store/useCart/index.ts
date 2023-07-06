@@ -18,6 +18,25 @@ export const useCart = create<CartStore>()(
             : [...state.cart, productParam],
         }));
       },
+      updateQty: (productParam) => {
+        if (productParam.qty === 0) {
+          set((state) => ({
+            cart: state.cart.filter(
+              (product) => product.id !== productParam.id
+            ),
+          }));
+        } else {
+          const newState = get().cart.map((productOnCart) =>
+            productOnCart.id === productParam.id
+              ? { ...productOnCart, qty: productParam.qty }
+              : productOnCart
+          );
+
+          set((state) => ({
+            cart: newState,
+          }));
+        }
+      },
     }),
     { name: 'cart' }
   )

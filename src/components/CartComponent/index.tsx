@@ -11,8 +11,11 @@ import {
   Divider,
 } from '@chakra-ui/react';
 import CartItem from './component/CartItem';
+import { useCart } from '../../Store/useCart';
 
 const CartComponent = () => {
+  const cartProducts = useCart((state) => state.cart);
+
   return (
     <Container maxW={'5xl'} py={12}>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
@@ -39,9 +42,9 @@ const CartComponent = () => {
               />
             }
           >
-            {[1, 2, 3].map(() => (
+            {cartProducts.map((cartProps) => (
               <>
-                <CartItem text={'Business Planning'} />
+                <CartItem {...cartProps} />
               </>
             ))}
           </Stack>

@@ -1,3 +1,2 @@
-export type CartItemProps = {
-  text: string;
-};
+import { CartProduct } from '../../../../Store/useCart/types';
+export type CartItemProps = CartProduct;
