@@ -36,9 +36,9 @@ const ProductList = () => {
                         />
                       </GridItem>
                     ))
-                : products.map((book) => (
-                    <GridItem key={book.id}>
-                      <ProductItem {...book} />
+                : products.map((product) => (
+                    <GridItem key={product.id}>
+                      <ProductItem {...product} />
                     </GridItem>
                   ))}
             </SimpleGrid>

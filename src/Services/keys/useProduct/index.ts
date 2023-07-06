@@ -1,3 +1,3 @@
-export const useProductsKey = () => ['useProductKey'];
+export const productsKey = () => ['useProductKey'];
 
-export const useProductByIdKey = (id: number) => ['useProductKey', id];
+export const productByIdKey = (id: number) => ['useProductKey', id];

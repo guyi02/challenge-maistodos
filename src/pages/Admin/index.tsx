@@ -10,22 +10,15 @@ import {
   Divider,
   IconButton,
 } from '@chakra-ui/react';
-import CartItem from './component/CartItem';
-import { useCart } from '../../Store/useCart';
-import PaymentButton from '../PaymentButton';
+
 import { FaArrowLeft } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { useCallback } from 'react';
+import RegisterForm from '../../components/RegisterForm';
+import ProductListAdmin from '../../components/ProductListAdmin';
 
-const CartComponent = () => {
+const Admin = () => {
   const navigate = useNavigate();
-  const cartProducts = useCart((state) => state.cart);
-  const totalValue =
-    cartProducts.length > 0
-      ? cartProducts
-          .map((cartProduct) => cartProduct.price * cartProduct.qty)
-          .reduce((total, item) => total + item)
-      : 0;
 
   const goBack = useCallback(() => {
     return navigate('/');
@@ -53,10 +46,10 @@ const CartComponent = () => {
               alignSelf={'flex-start'}
               rounded={'md'}
             >
-              My Cart
+              Admin Products
             </Text>
           </Flex>
-          <Heading>Check out the products in your cart </Heading>
+          <Heading>Check out the products in your base </Heading>
 
           <Stack
             spacing={4}
@@ -66,29 +59,13 @@ const CartComponent = () => {
               />
             }
           >
-            {cartProducts.map((cartProps) => (
-              <>
-                <CartItem {...cartProps} />
-              </>
-            ))}
+            <ProductListAdmin />
           </Stack>
         </Stack>
         <Flex>
           <Stack spacing={10} pt={2} width={'full'} mt={24}>
-            <Flex direction={'row'} align={'center'} justify={'space-between'}>
-              <Heading>Total:</Heading>
-              <Text fontSize={'3xl'}>R$ {totalValue}</Text>
-            </Flex>
-
-            <Divider />
-
-            <PaymentButton isDisabled={cartProducts.length === 0} />
-
-            {cartProducts.length === 1 && (
-              <Text color='red.200' align={'center'}>
-                You need to login to make the payment.
-              </Text>
-            )}
+            <Heading>New Product</Heading>
+            <RegisterForm />
           </Stack>
         </Flex>
       </SimpleGrid>
@@ -96,4 +73,4 @@ const CartComponent = () => {
   );
 };
 
-export default CartComponent;
+export default Admin;

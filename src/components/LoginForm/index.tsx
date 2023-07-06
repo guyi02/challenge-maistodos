@@ -1,7 +1,7 @@
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { loginValidationSchema } from './utils/validation';
+import { loginValidationSchema } from '../../utils/validations';
 import { LoginFormProps } from './types';
 
 const LoginForm: React.FC = () => {
