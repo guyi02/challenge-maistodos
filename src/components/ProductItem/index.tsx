@@ -13,9 +13,19 @@ import {
 import { ProductDictionary } from '../../dictionary/home';
 import { Product as ProductProps } from '../../Services/useProduct/types';
 import { FaCartPlus } from 'react-icons/fa';
-import { AiOutlineHeart } from 'react-icons/ai';
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import { useFavorites } from '../../Store/useFavorites';
+import { useMemo } from 'react';
 
-const ProductItem = ({ name, price, image, description }: ProductProps) => {
+const ProductItem = ({ id, name, price, image, description }: ProductProps) => {
+  const favoritesProducts = useFavorites((state) => state.products);
+  const handleFavoriteProducts = useFavorites((state) => state.setProducts);
+
+  const isFavorite = useMemo(
+    () => favoritesProducts.find((favProd) => favProd.id === id),
+    [favoritesProducts, id]
+  );
+
   return (
     <Stack shadow='md' borderWidth='1px' borderRadius='md' minHeight={200}>
       <Flex flexDirection='column' px={4}>
@@ -53,8 +63,17 @@ const ProductItem = ({ name, price, image, description }: ProductProps) => {
           >
             <IconButton
               aria-label={'teste'}
-              onClick={() => alert('fav')}
-              icon={<AiOutlineHeart />}
+              onClick={() =>
+                handleFavoriteProducts({
+                  id,
+                  price,
+                  image,
+                  name,
+                  description,
+                })
+              }
+              color={isFavorite ? 'red.200' : 'black.200'}
+              icon={isFavorite ? <AiFillHeart /> : <AiOutlineHeart />}
               title='heart-svg'
             />
 
