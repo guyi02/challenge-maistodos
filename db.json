@@ -1,0 +1,37 @@
+{
+  "products": [
+    {
+      "name": "X-Búrguer",
+      "description": "Pão, bife de hambúrguer 90g, 1 fatia de queijo, salada e batata.",
+      "image": "https://fastly.picsum.photos/id/221/500/500.jpg?hmac=KCXMA-FWgXECRN0Wvj1XgNIBhdV8EdfbjF-IyzASjgQ",
+      "price_id_api": "price_1NQetULvJyV6bQCEZ0p6IRB7",
+      "id": 2,
+      "price": 15
+    },
+    {
+      "id": 3,
+      "name": "X-Bacon",
+      "description": "Pão, bife de hambúrguer 90g, 1 fatia de queijo, 2 fatia de bacon, salada e batata.",
+      "image": "https://fastly.picsum.photos/id/323/500/500.jpg?hmac=b24VENFLL59JsHRUlOIBhRigKfk84EllIDCVfa_alUQ",
+      "price": 12.5,
+      "price_id_api": "price_1NR0TtLvJyV6bQCEfpuEc7wY"
+    },
+    {
+      "id": 4,
+      "name": "X-Tudo",
+      "description": "Pão, 2 bifes de hambúrguer 90g, 2 fatias de queijo, 4 fatias de bacon, salada e batata.",
+      "image": "https://fastly.picsum.photos/id/79/500/500.jpg?hmac=V9r3LL9l3ipDXhUa7Gglyku4tLjjL3Db_caLTMuHyU8",
+      "price": 14.5,
+      "price_id_api": "price_1NR0V5LvJyV6bQCEGjnRivdf"
+    },
+    {
+      "name": "Coca cola 350ml",
+      "description": "Água gaseificada, açúcar, extrato de noz de cola, cafeína, corante caramelo IV, acidulante ácido fosfórico e aroma natural.",
+      "image": "https://fastly.picsum.photos/id/974/500/500.jpg?hmac=0-kGKWck7qYIg2J6l2HYdQ5Sc8Ws-GAtRyM6FjzVs8o",
+      "value": 12.9,
+      "id": 5,
+      "price": 12.9,
+      "price_id_api": "price_1NR0VkLvJyV6bQCEjyngMraW"
+    }
+  ]
+}
