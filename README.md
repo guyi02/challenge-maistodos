@@ -38,7 +38,7 @@ Contido nesse projeto. Então para facilitar, abra uma nova janela do terminal e
 json-server --watch -p 4000 db.json
 ```
 
-Você pode testar usando poatman, insomnia ou apenas jogando o endereço na url do seu browser
+Você pode testar usando postman, insomnia ou apenas jogando o endereço na url do seu browser
 
 Agora está permitido iniciar a aplicação através do comando
 
@@ -49,7 +49,7 @@ yarn start
 # Observação
 
 Para cadastrar um novo produto e que ele possa ser "comprado" no stripe, é necessário criar novos produtos usando o price_id que é a referencia dentro da plataforma do Stripe para cada produto.
-Então basta utilizar estes dados abaixo durante o cadastro de uma produto.
+Então basta utilizar estes dados abaixo durante o cadastro de novo produto.
 
 ```bash
 "id": 3,
