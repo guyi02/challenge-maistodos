@@ -5,6 +5,7 @@ import { useCart } from '../../Store/useCart';
 
 const PaymentButton = ({ isDisabled }: PaymentButtonProps) => {
   const cartItems = useCart((state) => state.cart);
+
   async function handleCheckout() {
     const stripe = await getStripe();
     const itemsOnCart = cartItems.map((cartItem) => {

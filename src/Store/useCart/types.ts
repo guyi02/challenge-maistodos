@@ -6,4 +6,5 @@ export type CartStore = {
   cart: CartProduct[];
   addProduct: (products: CartProduct) => void;
   updateQty: (products: CartProduct) => void;
+  clearCart: () => void;
 };

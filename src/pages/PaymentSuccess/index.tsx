@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Heading, Stack, Text, Button } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
+import { useCart } from '../../Store/useCart';
 
 const PaymentSuccess = () => {
+  const navigate = useNavigate();
+  const clearCart = useCart((state) => state.clearCart);
+
+  useEffect(() => {
+    clearCart();
+  }, [clearCart]);
+
   return (
     <Container maxW={'5xl'}>
       <Stack
@@ -31,6 +40,7 @@ const PaymentSuccess = () => {
             colorScheme={'orange'}
             bg={'orange.400'}
             _hover={{ bg: 'orange.500' }}
+            onClick={() => navigate('/')}
           >
             Back to home
           </Button>

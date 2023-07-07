@@ -48,7 +48,7 @@ yarn start
 
 # Observação
 
-Para cadastrar um novo produto e que ele possa ser "comprado" no stripe, é necessário criar novos produtos usando o price_id que é a referencia dentro da plataforma do Stripe para cada produto.
+Para cadastrar um novo produto, você precisar digitar na url "http://localhost:3000/admin" e para que ele possa ser "comprado" no stripe, é necessário criar novos produtos usando o "price_id que" é a referencia dentro da plataforma do Stripe para cada produto.
 Então basta utilizar estes dados abaixo durante o cadastro de novo produto.
 
 ```bash

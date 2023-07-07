@@ -17,14 +17,15 @@ const CartItem = ({
   const updateQty = useCart((state) => state.updateQty);
   return (
     <Stack direction={'row'} align={'center'}>
-      <Flex w={20} h={20} align={'center'} justify={'center'} rounded={'full'}>
-        <Image
-          rounded={'md'}
-          alt={'feature image'}
-          src={image}
-          objectFit={'cover'}
-        />
-      </Flex>
+      <Image
+        rounded={'md'}
+        alt={'feature image'}
+        src={image}
+        w={'10'}
+        h={'10'}
+        objectFit={'contain'}
+      />
+
       <Stack>
         <Text fontWeight={600}>{name}</Text>
         <Text fontWeight={300} fontSize={'small'} color={'gray.400'}>

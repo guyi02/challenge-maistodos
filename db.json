@@ -32,6 +32,15 @@
       "id": 5,
       "price": 12.9,
       "price_id_api": "price_1NR0VkLvJyV6bQCEjyngMraW"
+    },
+    {
+      "name": "Teste gui 123",
+      "description": "Teste de descrição",
+      "image": "https://fastly.picsum.photos/id/323/500/500.jpg?hmac=b24VENFLL59JsHRUlOIBhRigKfk84EllIDCVfa_alUQ",
+      "price_id_api": "price_1NR0TtLvJyV6bQCEfpuEc7wY",
+      "value": 22,
+      "id": 6,
+      "price": 22
     }
   ]
 }
