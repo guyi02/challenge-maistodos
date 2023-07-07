@@ -53,6 +53,7 @@ const ProductItem = ({
             height={{ sm: 300, md: 200 }}
             alt={ProductDictionary.AltImage + name}
             src={image}
+            data-testid='product-item-image'
           />
 
           <Center my={2}>
@@ -78,7 +79,7 @@ const ProductItem = ({
             p={2}
           >
             <IconButton
-              aria-label={'teste'}
+              aria-label={'heart-svg'}
               onClick={() =>
                 handleFavoriteProducts({
                   id,
@@ -95,7 +96,7 @@ const ProductItem = ({
             />
 
             <IconButton
-              aria-label={'teste'}
+              aria-label={'cart-svg'}
               onClick={() => {
                 addProduct({
                   id,
@@ -107,7 +108,7 @@ const ProductItem = ({
                   price_id_api,
                 });
               }}
-              title='heart-svg'
+              title='cart-svg'
               color={hasOnCart ? 'green.200' : 'black.200'}
               icon={hasOnCart ? <FaCartArrowDown /> : <FaCartPlus />}
             />

@@ -46,19 +46,19 @@ const ItemAdmin = ({
       <Flex direction={'row'} marginLeft={'auto'} align={'center'}>
         <IconButton
           mx={6}
-          aria-label={'teste'}
+          aria-label={'pen-svg'}
           onClick={() => handleEdit(id)}
           icon={<FaPenAlt />}
-          title='heart-svg'
+          title='pen-svg'
           bg={'yellow.200'}
         />
         {''}
         <IconButton
           mx={6}
-          aria-label={'teste'}
+          aria-label={'close-svg'}
           onClick={() => handleDeleteItem(id)}
           icon={<AiOutlineClose />}
-          title='heart-svg'
+          title='close-svg'
           bg={'red.200'}
         />
       </Flex>

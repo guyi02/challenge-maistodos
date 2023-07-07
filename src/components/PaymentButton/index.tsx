@@ -39,6 +39,7 @@ const PaymentButton = ({ isDisabled }: PaymentButtonProps) => {
       _hover={{
         bg: isDisabled ? 'gray.500' : 'blue.500',
       }}
+      data-testid='payment-button'
     >
       Pay
     </Button>

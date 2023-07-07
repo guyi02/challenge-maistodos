@@ -32,10 +32,10 @@ const Admin = () => {
           <Flex direction={'row'}>
             <IconButton
               mr={6}
-              aria-label={'teste'}
+              aria-label={'arrow-left-svg'}
               onClick={goBack}
               icon={<FaArrowLeft />}
-              title='cart-svg'
+              title='arrow-left-svg'
             />
             <Text
               textTransform={'uppercase'}

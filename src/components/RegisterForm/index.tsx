@@ -135,6 +135,7 @@ const RegisterForm = ({ editProduct }: { editProduct: number }) => {
           _hover={{
             bg: 'blue.500',
           }}
+          data-testid='register-product-button'
         >
           {isEdit ? 'Edit' : 'Save'}
         </Button>

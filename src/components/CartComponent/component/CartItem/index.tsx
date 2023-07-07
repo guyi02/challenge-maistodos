@@ -37,7 +37,7 @@ const CartItem = ({
       <Flex direction={'row'} marginLeft={'auto'} align={'center'}>
         <IconButton
           mx={6}
-          aria-label={'teste'}
+          aria-label={'minus-svg'}
           onClick={() => {
             updateQty({
               id,
@@ -50,12 +50,12 @@ const CartItem = ({
             });
           }}
           icon={<FaMinus />}
-          title='heart-svg'
+          title='minus-svg'
         />
         <Text>{qty}</Text>
         <IconButton
           mx={6}
-          aria-label={'teste'}
+          aria-label={'plus-svg'}
           onClick={() => {
             updateQty({
               id,
@@ -68,7 +68,7 @@ const CartItem = ({
             });
           }}
           icon={<FaPlus />}
-          title='heart-svg'
+          title='plus-svg'
         />
       </Flex>
     </Stack>

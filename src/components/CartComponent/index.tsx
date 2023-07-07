@@ -38,7 +38,7 @@ const CartComponent = () => {
           <Flex direction={'row'}>
             <IconButton
               mr={6}
-              aria-label={'teste'}
+              aria-label={'cart-svg'}
               onClick={goBack}
               icon={<FaArrowLeft />}
               title='cart-svg'
@@ -52,6 +52,7 @@ const CartComponent = () => {
               p={2}
               alignSelf={'flex-start'}
               rounded={'md'}
+              data-testid='my-cart-text'
             >
               My Cart
             </Text>
