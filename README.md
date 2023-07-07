@@ -48,11 +48,10 @@ yarn start
 
 # Observação
 
-Para cadastrar um novo produto, você precisar digitar na url "http://localhost:3000/admin" e para que ele possa ser "comprado" no stripe, é necessário criar novos produtos usando o "price_id que" é a referencia dentro da plataforma do Stripe para cada produto.
+Para cadastrar um novo produto, você precisar digitar na url "http://localhost:3000/admin" e para que ele possa ser "comprado" no stripe, é necessário criar novos produtos usando o "price_id" que é a referencia dentro da plataforma do Stripe para cada produto.
 Então basta utilizar estes dados abaixo durante o cadastro de novo produto.
 
 ```bash
-"id": 3,
 "name": "X-Bacon",
 "description": "Pão, bife de hambúrguer 90g, 1 fatia de queijo, 2 fatia de bacon, salada e batata.",
 "image": "https://fastly.picsum.photos/id/323/500/500.jpg?hmac=b24VENFLL59JsHRUlOIBhRigKfk84EllIDCVfa_alUQ",
@@ -63,7 +62,7 @@ Então basta utilizar estes dados abaixo durante o cadastro de novo produto.
 ### Dados fake para preencher o chekout do stripe
 
 ```bash
-4242 4242 4242 4242  | 02 / 32 | 323 | 23232
+4242 4242 4242 4242  | 02 / 32 | 323
 ```
 
 ### Alguns links úteis utilizados para criar a aplicação
