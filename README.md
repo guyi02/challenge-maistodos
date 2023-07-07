@@ -65,3 +65,17 @@ Então basta utilizar estes dados abaixo durante o cadastro de novo produto.
 ```bash
 4242 4242 4242 4242  | 02 / 32 | 323 | 23232
 ```
+
+### Alguns links úteis utilizados para criar a aplicação
+
+https://dev.to/vitordevsp/padronizacao-de-commit-com-commitlint-husky-e-commitizen-3g1n
+
+https://valchan.com.br/lint-staged-husky/
+
+https://articles.wesionary.team/react-hook-form-schema-validation-using-zod-80d406e22cd8
+
+https://www.fabricadecodigo.com/json-server/
+
+https://picsum.photos/
+
+https://www.freecodecamp.org/news/react-stripe-payments/
